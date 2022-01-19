@@ -7,12 +7,14 @@
   <ItemGroup>
     <None Remove="Pages\Restaurants\" />
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+    <None Remove="bootstrap" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\Restaurants\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="bootstrap" Version="3.4.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Restaurants.Data\Restaurants.Data.csproj">
