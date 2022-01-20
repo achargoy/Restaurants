@@ -10,6 +10,7 @@ namespace Restaurants.Data
         Restaurant GetById(int Id);
         Restaurant Update(Restaurant updatedRestaurant);
         int Commit();
+        Restaurant Add(Restaurant newRestaurant);
     }
 
     public class InMemoryRestaurantData : IRestaurantData
@@ -58,5 +59,11 @@ namespace Restaurants.Data
                    select r;
         }
 
+        public Restaurant Add(Restaurant newRestaurant)
+        {
+            restaurants.Add(newRestaurant);
+            newRestaurant.Id = restaurants.Count + 1;
+            return newRestaurant;
+        }
     }
 }
