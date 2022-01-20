@@ -8,6 +8,8 @@ namespace Restaurants.Data
     {
         IEnumerable<Restaurant> GetRestaurantsByName(string name);
         Restaurant GetById(int Id);
+        Restaurant Update(Restaurant updatedRestaurant);
+        int Commit();
     }
 
     public class InMemoryRestaurantData : IRestaurantData
@@ -24,6 +26,25 @@ namespace Restaurants.Data
             };
         }
 
+        public Restaurant Update(Restaurant updatedRestaurant)
+        {
+            var restaurant = restaurants.FirstOrDefault(r => r.Id == updatedRestaurant.Id);
+
+            if (restaurant != null)
+            {
+                restaurant.Name = updatedRestaurant.Name;
+                restaurant.Location = updatedRestaurant.Location;
+                restaurant.CuisineType = updatedRestaurant.CuisineType;
+            }
+
+            return restaurant;
+        }
+
+        public int Commit()
+        {
+            return 0;
+        }
+
         public Restaurant GetById(int Id)
         {
             return restaurants.FirstOrDefault(r => r.Id == Id);
@@ -36,5 +57,6 @@ namespace Restaurants.Data
                    orderby r.Name
                    select r;
         }
+
     }
 }
